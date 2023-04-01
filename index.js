@@ -99,7 +99,7 @@ function setWarning(error) {
 
 function asJava(json) {
     var keys = Object.keys(json)
-        .map(it => '\n\t\t.put("' + it + '", instance.get' + it + '())');
+        .map(it => '\n\t\t.put("' + it + '", instance.get' + capitalize(it) + '())');
   return (
     "private static JSONObject json(Instance instance) {" +
     "\n\treturn new JSONObject()" +
@@ -107,4 +107,8 @@ function asJava(json) {
     ";" +
     "\n}"
   );
+}
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
