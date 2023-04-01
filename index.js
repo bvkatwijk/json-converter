@@ -7,6 +7,7 @@ function convertJson() {
     getInputArea().value = JSON.stringify(result.value, null, 2);
     var java = asJava(result.value);
     getOutputArea().innerHTML = java;
+    hljs.highlightAll();
   } else {
     setWarning(result.value);
   }
